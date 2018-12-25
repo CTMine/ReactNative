@@ -1,0 +1,4 @@
+#Tue Dec 25 13:35:38 HKT 2018
+base.0=/Users/chinchris/Documents/Data/projects_react_native/rn-minimalist-weather-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/1
+path.0=classes.dex
+renamed.0=classes.dex
