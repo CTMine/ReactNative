@@ -1,12 +1,17 @@
 
 import React from 'react';
-import { StyleSheet, Text, View, Animated, ScrollView, RefreshControl, Button, Image } from 'react-native';
-import { createAppContainer, createDrawerNavigator, DrawerItems } from 'react-navigation';
+import { StyleSheet, Text, View, Animated, ScrollView, RefreshControl, Button, Image, TouchableOpacity } from 'react-native';
+import { createAppContainer, createDrawerNavigator, DrawerItems, createStackNavigator } from 'react-navigation';
+import IOSIcon from "react-native-vector-icons/Ionicons";
 
 import { API_KEY } from './utils/WeatherAPIKey';
 
 import Weather from './components/Weather';
 
+import MainScreen from "./pages/MainScreen";
+import DetailScreen from "./pages/DetailScreen";
+
+/*
 class MyHomeScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: 'Home',
@@ -27,6 +32,34 @@ class MyHomeScreen extends React.Component {
     );
   }
 }
+*/
+const MyHomeScreen = createStackNavigator({
+  Main : {
+    screen: MainScreen,
+    navigationOptions: ({navigation}) => ({
+      title: "Main",
+      headerLeft:(<TouchableOpacity onPress={() => navigation.openDrawer() }>
+                    <IOSIcon name="ios-menu" size={30} />
+                  </TouchableOpacity>
+      ),
+      headerStyle: { paddingRight: 10, paddingLeft: 15 },
+
+      drawerLabel: 'Home',
+      drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('./assets/tab-icon.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+    })
+  },
+  Detail: {
+    screen: DetailScreen,
+    navigationOptions: ({navigation}) => ({
+      title: "Detail",
+    })     
+  }
+});
 
 class MyWeatherScreen extends React.Component {
   static navigationOptions = {
