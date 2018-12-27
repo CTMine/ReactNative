@@ -42,15 +42,7 @@ const MyHomeScreen = createStackNavigator({
                     <IOSIcon name="ios-menu" size={30} />
                   </TouchableOpacity>
       ),
-      headerStyle: { paddingRight: 10, paddingLeft: 15 },
-
-      drawerLabel: 'Home',
-      drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('./assets/tab-icon.png')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    )
+      headerStyle: { paddingRight: 10, paddingLeft: 15 }
     })
   },
   Detail: {
@@ -257,7 +249,33 @@ const styles = StyleSheet.create({
   }
 });
 
-
+/*
+const MyDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: MyHomeScreen,
+    navigationOptions: ({navigation}) => ({
+      drawerLabel: 'Home',
+      drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('./assets/tab-icon.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+      )
+    })
+  },
+  WEATHER: {
+    screen: MyWeatherScreen,
+  },
+}, {
+  contentComponent: (props) => (
+    <View>
+      <Text>Custom Header</Text>
+      <DrawerItems {...props} />
+      <Text>Custom Footer</Text>
+    </View>
+  )}
+);
+*/
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
     screen: MyHomeScreen,
