@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, Animated, ScrollView, RefreshControl, Button, Image } from 'react-native';
-import { createAppContainer, createDrawerNavigator } from 'react-navigation';
+import { createAppContainer, createDrawerNavigator, DrawerItems } from 'react-navigation';
 
 import { API_KEY } from './utils/WeatherAPIKey';
 
@@ -232,7 +232,15 @@ const MyDrawerNavigator = createDrawerNavigator({
   WEATHER: {
     screen: MyWeatherScreen,
   },
-});
+}, {
+  contentComponent: (props) => (
+    <View>
+      <Text>Custom Header</Text>
+      <DrawerItems {...props} />
+      <Text>Custom Footer</Text>
+    </View>
+  )}
+);
 
 const MyApp = createAppContainer(MyDrawerNavigator);
 export default MyApp;
